@@ -18,7 +18,7 @@ export class FetchdataComponent implements OnInit, OnDestroy {
   constructor(private fetchdataService: FetchdataService){}
 
   ngOnInit(): void {
-    this.sub = this.fetchdataService.getPokemon(1).subscribe({
+    this.sub = this.fetchdataService.getPokemon(2).subscribe({
       next: x => this.pokemon = x,
       error: err => this.error = err
     });
