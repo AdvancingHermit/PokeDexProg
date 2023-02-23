@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { FightComponent } from './fight/fight.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { FetchdataComponent } from './fetchdata/fetchdata.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     FightComponent,
-    InventoryComponent
+    InventoryComponent,
+    FetchdataComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

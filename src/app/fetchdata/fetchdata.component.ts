@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FetchdataService } from '../fetchdata/fetchdata.service';
-import { IPokemon } from '../fetchdata/api';
+import { FetchdataService } from './fetchdata.service';
+import { IPokemon } from './api';
 import { Subscription } from 'rxjs';
 
-
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'],
+  selector: 'app-fetchdata',
+  templateUrl: './fetchdata.component.html',
+  styleUrls: ['./fetchdata.component.css'],
   providers: [FetchdataService]
 })
-export class SearchComponent {
+export class FetchdataComponent implements OnInit, OnDestroy {
+
   pokemon!: IPokemon;
   error: string = "";
   sub: Subscription | undefined;
