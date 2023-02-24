@@ -1,69 +1,46 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FetchdataService } from '../fetchdata/fetchdata.service';
 import { IPokemon } from '../fetchdata/api';
 import { Subscription } from 'rxjs';
+import { PokemonClient } from 'pokenode-ts';
+let pokemonArray: string[] = [];
+
+
+(async () => {
+  
+  for (let i = 1; i < 10; i++) {
+  const api = new PokemonClient();
+
+  await api
+    .getPokemonById(i)
+    .then((data) => pokemonArray[i - 1] = (data.name)) // will output "Luxray"
+    .catch((error) => console.error(error));
+  }
+  console.log(pokemonArray);
+})();
+
 
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers: [FetchdataService]
+  providers: []
 })
 
 export class SearchComponent implements OnInit, OnDestroy {
-  pokemon!: IPokemon;
-  pokemonArray: IPokemon[] = [];
+
   error: string = "";
   sub: Subscription | undefined;
+  pokeArr = pokemonArray;
 
-  constructor(private fetchdataService: FetchdataService) { }
-
-  ngOnInit(): void {
-    for(let i: number = 1; i < 6; i++){
-      console.log("ID Number: " + i );
-      this.sub = this.fetchdataService.getPokemon(i).subscribe({
-
-        next: x => this.pokemon = x,
-        error: err => this.error = err
-  
-      });
-      console.log("Pokemon: " + this.pokemon);
-    }
+  async ngOnInit(): Promise<void> {
 
     console.log("I AM DONE FIRST TEST");
-    /*
-
-    this.sub = this.fetchdataService.getPokemon(1).subscribe({
-
-      next: x => this.pokemon = x,
-      error: err => this.error = err
-
-    });
-  
-    for (let i = 1; i < 151; i++) {
-      this.GetAllPokemon(i);
-    }
-    */
-  }
-
-  GetAllPokemon(id: number): IPokemon[] {
-    console.log("ID Number: " + id );
-    this.sub = this.fetchdataService.getPokemon(id).subscribe({
-      
-      next: x => this.pokemon = x,
-      error: err => this.error = err
-
-    });
-    console.log("Pokemon: " + this.pokemon);
-    let ThePokemonName = this.pokemon;
-    this.pokemonArray.push(ThePokemonName);
-    console.log(ThePokemonName);
-    return this.pokemonArray;
   }
 
 
-  ngOnDestroy(): void {
+
+  async ngOnDestroy(): Promise<void> {
     this.sub?.unsubscribe();
   }
 

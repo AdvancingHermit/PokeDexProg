@@ -25,6 +25,25 @@ export class FetchdataService {
         catchError(this.handleError)
       );
   }
+
+  getAllPokemon(numPokemons: number): Observable<IPokemon>[] {
+    this.header.append('Content-Type', 'application/json');
+
+    const pokemonArray: Observable<IPokemon>[] = [];
+
+    for (let i = 1; i < numPokemons; i++) {
+      pokemonArray.push(
+        this._http.get<IPokemon>(this.url + i, { headers: this.header })
+        .pipe(
+          tap(data => console.log("Pokemon Number: " + i)), 
+          catchError(this.handleError) )
+      );
+    }
+
+    return pokemonArray;
+  }
+
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
