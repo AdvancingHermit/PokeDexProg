@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IPokemon } from '../fetchdata/api';
-import { Subscription } from 'rxjs';
+import { generate, Subscription } from 'rxjs';
 import { PokemonClient } from 'pokenode-ts';
 let pokemonArray: string[] = [];
 
 
 (async () => {
   
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 151; i++) {
   const api = new PokemonClient();
 
   await api
@@ -18,6 +18,12 @@ let pokemonArray: string[] = [];
   console.log(pokemonArray);
 })();
 
+function generatePokemon(): string[] {
+  for (let i = 0; i < pokemonArray.length; i++) {
+    console.log(pokemonArray[i]);
+  }
+  return pokemonArray;
+}
 
 
 @Component({
@@ -31,9 +37,25 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   error: string = "";
   sub: Subscription | undefined;
-  pokeArr = pokemonArray;
+  pokeArr: string[] = generatePokemon();  
+
+  clickFunction() {
+    
+    alert(pokemonArray.length + " This is The other one " + this.pokeArr.length);
+
+    for (let i = 0; i < pokemonArray.length; i++) {
+      console.log("Length is: " + this.pokeArr.length);
+    }
+    alert("I AM DONE");
+
+    
+  }
 
   async ngOnInit(): Promise<void> {
+    
+  for (let i = 0; i < pokemonArray.length; i++) {
+    this.pokeArr[i] = pokemonArray[i];
+  }
 
     console.log("I AM DONE FIRST TEST");
   }
