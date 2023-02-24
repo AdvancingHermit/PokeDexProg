@@ -17,3 +17,4 @@ export interface IPokemon {
     stats: any[];
     types: any[];
 }
+
