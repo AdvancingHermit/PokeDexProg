@@ -12,15 +12,16 @@ let pokemonArray: string[] = [];
 
     await api
       .getPokemonById(i)
-      .then((data) => pokemonArray[i - 1] = (data.name)) // will output "Luxray"
+      .then((data) => pokemonArray[i - 1] = (data.name)) 
       .catch((error) => console.error(error));
   }
-  console.log(pokemonArray);
+  //console.log(pokemonArray);
 })();
 
 function generatePokemon(): string[] {
   return pokemonArray;
 }
+
 
 
 @Component({
@@ -35,12 +36,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   error: string = "";
   sub: Subscription | undefined;
   pokeArr: string[] = generatePokemon();
+  stats: string[][] = [];
 
   clickFunction() {
-
-    alert(pokemonArray.length + " This is The other one " + this.pokeArr.length);
     console.log("Length is: " + this.pokeArr.length);
-
   }
 
   async ngOnInit(): Promise<void> {
@@ -49,8 +48,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       pokemonArray[i] = pokemonArray[i].charAt(0).toUpperCase() + pokemonArray[i].slice(1);
       this.pokeArr[i] = pokemonArray[i];
     }
-
-    console.log("I AM DONE FIRST TEST");
   }
 
 
