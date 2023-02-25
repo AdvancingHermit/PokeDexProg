@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { IPokemon } from "./api";
+import { IPokemon, IPokemonArray } from "./api";
 
 
 @Injectable( { providedIn: 'root' })
 export class FetchdataService {
 
   private url: string = "https://pokeapi.co/api/v2/pokemon/";
+  private urlTwo: string = "https://pokeapi.co/api/v2/pokemon?limit=";
   private header = new HttpHeaders();
 
   private _http;
@@ -26,21 +27,14 @@ export class FetchdataService {
       );
   }
 
-  getAllPokemon(numPokemons: number): Observable<IPokemon>[] {
+  getPokemonArray(amount: number): Observable<IPokemonArray> {
     this.header.append('Content-Type', 'application/json');
-
-    const pokemonArray: Observable<IPokemon>[] = [];
-
-    for (let i = 1; i < numPokemons; i++) {
-      pokemonArray.push(
-        this._http.get<IPokemon>(this.url + i, { headers: this.header })
-        .pipe(
-          tap(data => console.log("Pokemon Number: " + i)), 
-          catchError(this.handleError) )
+    return this._http.get<IPokemonArray>(this.urlTwo + amount, { headers: this.header })
+      .pipe(
+        //tap(data => console.log('THE POKEMON NUMBER: ' + id + " WITH THE DATA: " + JSON.stringify(data))),
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
       );
-    }
-
-    return pokemonArray;
   }
 
 

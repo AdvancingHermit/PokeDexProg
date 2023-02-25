@@ -18,3 +18,10 @@ export interface IPokemon {
     types: any[];
 }
 
+export interface IPokemonArray {
+    count: number;
+    next: string;
+    previous: string;
+    results: IPokemon[];
+}
+

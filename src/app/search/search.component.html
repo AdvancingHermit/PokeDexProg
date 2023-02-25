@@ -2,6 +2,12 @@
 
 
  <button (click)="clickFunction()"> Click Me </button>
- <p class="personaType">{{pokeArr.join(', ')}}</p>
+
+
+<span *ngFor="let pokemon of pokeArr">
+    <p>{{pokemon}}</p>
+</span>
+
+
 
 

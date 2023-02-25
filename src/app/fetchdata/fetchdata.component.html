@@ -1,1 +1,6 @@
-<p>{{pokemon}}'s Weight Is: {{pokemon}}</p>
+<p>{{pokemonArray}}'s Weight Is: {{pokemonArray}}</p>
+
+<button (click)="clickFunction()"> Click Me </button>
+<span *ngFor="let pokemon of pokemonArray.results">
+    <p>{{pokemon.name}}</p>
+</span>
