@@ -6,22 +6,19 @@ let pokemonArray: string[] = [];
 
 
 (async () => {
-  
-  for (let i = 1; i < 151; i++) {
-  const api = new PokemonClient();
 
-  await api
-    .getPokemonById(i)
-    .then((data) => pokemonArray[i - 1] = (data.name)) // will output "Luxray"
-    .catch((error) => console.error(error));
+  for (let i = 1; i < 151; i++) {
+    const api = new PokemonClient();
+
+    await api
+      .getPokemonById(i)
+      .then((data) => pokemonArray[i - 1] = (data.name)) // will output "Luxray"
+      .catch((error) => console.error(error));
   }
   console.log(pokemonArray);
 })();
 
 function generatePokemon(): string[] {
-  for (let i = 0; i < pokemonArray.length; i++) {
-    console.log(pokemonArray[i]);
-  }
   return pokemonArray;
 }
 
@@ -37,25 +34,21 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   error: string = "";
   sub: Subscription | undefined;
-  pokeArr: string[] = generatePokemon();  
+  pokeArr: string[] = generatePokemon();
 
   clickFunction() {
-    
+
     alert(pokemonArray.length + " This is The other one " + this.pokeArr.length);
+    console.log("Length is: " + this.pokeArr.length);
 
-    for (let i = 0; i < pokemonArray.length; i++) {
-      console.log("Length is: " + this.pokeArr.length);
-    }
-    alert("I AM DONE");
-
-    
   }
 
   async ngOnInit(): Promise<void> {
-    
-  for (let i = 0; i < pokemonArray.length; i++) {
-    this.pokeArr[i] = pokemonArray[i];
-  }
+
+    for (let i = 0; i < pokemonArray.length; i++) {
+      pokemonArray[i] = pokemonArray[i].charAt(0).toUpperCase() + pokemonArray[i].slice(1);
+      this.pokeArr[i] = pokemonArray[i];
+    }
 
     console.log("I AM DONE FIRST TEST");
   }
