@@ -1,0 +1,42 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(25, 118, 210);
+}
+
+.flex-container>div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.stats {
+    font-size: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    border-radius: 7px;
+}
+
+.card:hover {
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.75);
+}
+
+.poke-name {
+    font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+}
+.poke-name:first-letter, .stats:first-letter {
+    text-transform: uppercase;
+}
+
+.poke-image {
+    width: 200px;
+    height: 200px;
+}
