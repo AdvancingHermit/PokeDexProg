@@ -7,7 +7,7 @@ import { areas, pokemon } from "../data/pokemon.constants";
   styleUrls: ['./fight.component.css']
 })
 export class FightComponent implements OnInit, OnDestroy {
-	selectedArea = '';
+	selectedArea = 'Grassy Plains';
   areas = areas;
   pokemon = pokemon;
   areaIndex = 0;

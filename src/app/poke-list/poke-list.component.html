@@ -4,8 +4,10 @@
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{poke.id}}.png"
             alt="pokemon">
         <p class="poke-name">{{poke.name}}</p>
-        <p class="subStats">ID: {{poke.id}}</p>
-    <!--work in progress <p class="subStats">Area: {{areas[]}}</p> -->
+        <div class="subStats">
+            <p>ID: {{poke.id}}</p>
+            <p>{{pokemonArea(poke)}}</p>
+        </div>
         <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
             <p class="stats">{{poke.stats[k].stat.name + ": " + poke.stats[k].base_stat}}</p>
         </span>
@@ -38,7 +40,18 @@
         padding-left: 10px;
         text-align: left;
     }
-
+    .subStats {
+        font-size: 15px;
+        margin: 0px;
+        margin-bottom: 5px;
+        padding: 0;
+        color: #3d3d3d;
+        text-align: center;
+    }
+    .subStats > p {
+        margin: 0;
+        padding: 0;
+    }
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
         transition: 0.3s;
@@ -51,10 +64,10 @@
     }
 
     .poke-name {
+        text-align: center;
         font-size: 30px;
         margin: 0;
         padding: 0;
-        padding-bottom: 15px;
     }
 
     .poke-image {

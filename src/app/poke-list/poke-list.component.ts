@@ -34,7 +34,6 @@ export class PokeListComponent implements OnInit, OnDestroy {
   areas = areas;
   pokemon = pokemon;
   @Input() inputIDs: number[] = [];
-  
   constructor() { }
 
   async ngOnInit(): Promise<void> {
@@ -43,8 +42,10 @@ export class PokeListComponent implements OnInit, OnDestroy {
   ngOnChanges(): void {
     getPokemon(this.inputIDs).then((data) => this.pokeArr = data);
   }
+  pokemonArea(poke: Pokemon): string {
 
-
+    return areas[pokemon.findIndex((elem) => elem.indexOf(poke.id) > -1)]
+  }
 
   async ngOnDestroy(): Promise<void> {
     this.sub?.unsubscribe();
