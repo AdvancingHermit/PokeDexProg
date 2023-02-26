@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
-import { areas, pokemon } from "../data/pokemon.constants";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-fight',
@@ -23,5 +22,4 @@ export class FightComponent implements OnInit, OnDestroy {
 
   async ngOnDestroy(): Promise<void> {
 
-  }
 }

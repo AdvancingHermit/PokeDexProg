@@ -8,7 +8,6 @@ import { FightComponent } from './fight/fight.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { FetchdataComponent } from './fetchdata/fetchdata.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PokeListComponent } from './poke-list/poke-list.component';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { PokeListComponent } from './poke-list/poke-list.component';
     SearchComponent,
     FightComponent,
     InventoryComponent,
-    FetchdataComponent,
-    PokeListComponent
+    FetchdataComponent
   ],
   imports: [
     BrowserModule,

@@ -18,10 +18,15 @@ export interface IPokemon {
     types: any[];
 }
 
+export interface pokeSprites {
+    back_default: string;
+    front_default: string;
+}
+
+
 export interface IPokemonArray {
     count: number;
     next: string;
     previous: string;
-    results: IPokemon[];
+    results: any[];
 }
-

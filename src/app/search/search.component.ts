@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IPokemon } from '../fetchdata/api';
+import { IPokemon, pokeSprites } from '../fetchdata/api';
 import { generate, Subscription } from 'rxjs';
 import { PokemonClient } from 'pokenode-ts';
 let pokemonArray: string[] = [];
+let pokeTestArray: IPokemon[] = [];
 
 
 (async () => {
@@ -12,16 +13,15 @@ let pokemonArray: string[] = [];
 
     await api
       .getPokemonById(i)
-      .then((data) => pokemonArray[i - 1] = (data.name)) 
+      .then((data) => pokeTestArray[i - 1] = (data)) // will output "Luxray"
       .catch((error) => console.error(error));
   }
-  //console.log(pokemonArray);
+  console.log(pokeTestArray);
 })();
 
-function generatePokemon(): string[] {
-  return pokemonArray;
+function generatePokemon(): IPokemon[] {
+  return pokeTestArray;
 }
-
 
 
 @Component({
@@ -35,18 +35,37 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   error: string = "";
   sub: Subscription | undefined;
-  pokeArr: string[] = generatePokemon();
-
+  pokeArr: IPokemon[] = generatePokemon();
+  testSprite!: pokeSprites;
+  url: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
   clickFunction() {
-    console.log("Length is: " + this.pokeArr.length);
+
+    alert(pokeTestArray.length + " This is The other one " + this.pokeArr.length);
+
+    this.convertSprites();
+
+  }
+  getImage(id: number): string{
+    return this.url + id + ".png";
   }
 
   async ngOnInit(): Promise<void> {
 
-    for (let i = 0; i < pokemonArray.length; i++) {
-      pokemonArray[i] = pokemonArray[i].charAt(0).toUpperCase() + pokemonArray[i].slice(1);
-      this.pokeArr[i] = pokemonArray[i];
+    for (let i = 0; i < pokeTestArray.length; i++) {
+      this.pokeArr[i] = pokeTestArray[i];
+
+    }
+    console.log("I AM DONE FIRST TEST");
+  }
+
+  convertSprites() {
+    for (let i = 0; i < pokeTestArray.length; i++) {
+
+      this.testSprite = JSON.parse(JSON.stringify(pokeTestArray[i].sprites));
+      pokeTestArray[i].sprites = this.testSprite;
+      console.log(this.testSprite.front_default);
+
     }
   }
 
