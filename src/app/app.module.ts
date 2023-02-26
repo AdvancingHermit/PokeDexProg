@@ -9,6 +9,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { FetchdataComponent } from './fetchdata/fetchdata.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SearchComponent,
     FightComponent,
     InventoryComponent,
-    FetchdataComponent    
+    FetchdataComponent,
+    SearchFilterPipe    
   ],
   imports: [
     BrowserModule,

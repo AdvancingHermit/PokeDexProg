@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   error: string = "";
   sub: Subscription | undefined;
   pokeArr: IPokemon[] = generatePokemon();
+  pokeTestSearch: IPokemon[] = [];
   testSprite!: pokeSprites;
   url: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
@@ -76,6 +77,12 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   async ngOnDestroy(): Promise<void> {
     this.sub?.unsubscribe();
+  }
+
+  search(value: string): void {
+    this.pokeTestSearch = this.pokeArr.filter((val) =>
+      val.name.toLowerCase().includes(value)
+    );
   }
 
 }

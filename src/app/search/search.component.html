@@ -1,56 +1,30 @@
 <p> search works! </p>
 
+<form class="wrap">
+    <div class="search">
+        <h3>Search country by name filter : </h3>
+        <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter by country name"
+            [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
+    </div>
+</form>
+
+
 
 <button (click)="clickFunction()"> Click Me </button>
 
 
 <div class="flex-container">
-    <div class="card" *ngFor="let pokemon of pokeArr" style="margin: 5">
-        <img class="poke-image"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png"
-            alt="pokemon">
-        <p class="poke-name">{{pokemon.name}}</p>
-        <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
-            <p class="stats">{{pokemon.stats[k].stat.name + ": " + pokemon.stats[k].base_stat}}</p>
-        </span>
-    </div>
+        <div class="card" *ngFor="let pokemon of pokeTestSearch | searchFilter: searchTerm; index as i" style="margin: 5">
+                <img class="poke-image"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png"
+                    alt="pokemon">
+
+                <p class="poke-name">{{pokemon.name}}</p>
+                <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
+                    <p class="stats">{{pokemon.stats[k].stat.name + ": " + pokemon.stats[k].base_stat}}</p>
+                </span>
+        </div>
 </div>
 
 
-<div class="m-3">
-    <h3>Angular search by filter</h3>
-    <div class="wrap">
-      <div class="search">
-        <input
-          type="text"
-          [(ngModel)]="term"
-          class="searchTerm"
-          placeholder="What are you looking for?"
-        />
-      </div>
-  
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Country</th>
-            <th scope="col">Area</th>
-            <th scope="col">Population</th>
-          </tr>
-        </thead>
-  
-        <tbody>
-        <tr class="card" *ngFor="let pokemon of pokeArr | filter: term" style="margin: 5">
-            <img class="poke-image"
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png"
-                alt="pokemon">
-            <p class="poke-name">{{pokemon.name}}</p>
-            <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
-                <p class="stats">{{ pokemon.stats[k].stat.name + ": " + pokemon.stats[k].base_stat }}</p>
-            </span>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
