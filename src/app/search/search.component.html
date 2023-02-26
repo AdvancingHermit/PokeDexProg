@@ -1,17 +1,10 @@
-<p> search works! </p>
-
 <form class="wrap">
     <div class="search">
-        <h3>Search country by name filter : </h3>
-        <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter by country name"
+        <h3>Search pokemon by name filter : </h3>
+        <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter by pokemon name"
             [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
     </div>
 </form>
-
-
-
-<button (click)="clickFunction()"> Click Me </button>
-
 
 <div class="flex-container">
         <div class="card" *ngFor="let pokemon of pokeTestSearch | searchFilter: searchTerm; index as i" style="margin: 5">
