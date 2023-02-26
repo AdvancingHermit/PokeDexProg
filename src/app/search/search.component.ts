@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   error: string = "";
   sub: Subscription | undefined;
   pokeArr: string[] = generatePokemon();
-  stats: string[][] = [];
+
 
   clickFunction() {
     console.log("Length is: " + this.pokeArr.length);
