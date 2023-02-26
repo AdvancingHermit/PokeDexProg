@@ -8,7 +8,7 @@ let pokeTestArray: IPokemon[] = [];
 
 (async () => {
 
-  for (let i = 1; i < 151; i++) {
+  for (let i = 1; i < 15; i++) {
     const api = new PokemonClient();
 
     await api
@@ -33,11 +33,14 @@ function generatePokemon(): IPokemon[] {
 
 export class SearchComponent implements OnInit, OnDestroy {
 
+  searchTerm = '';
+  term = '';
+
   error: string = "";
   sub: Subscription | undefined;
   pokeArr: IPokemon[] = generatePokemon();
   testSprite!: pokeSprites;
-  url: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+  url: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
   clickFunction() {
 
