@@ -1,55 +1,6 @@
 <p>inventory works!</p>
 
-<div class="flex-container">
-    <div class="card" *ngFor="let poke of pokeArr" style="margin: 5">
-        <img class="poke-image"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{poke.id}}.png"
-            alt="pokemon">
-        <p class="poke-name">{{poke.name}}</p>
-        <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
-            <p class="stats">{{poke.stats[k].stat.name + ": " + poke.stats[k].base_stat}}</p>
-        </span>
-    </div>
+<div>
+    <app-poke-list [inputIDs]="ownedIDs"></app-poke-list>
+
 </div>
-
-<style>
-    .flex-container {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        background-color: rgb(25, 118, 210);
-    }
-
-    .flex-container>div {
-        background-color: #f1f1f1;
-        margin: 10px;
-        padding: 20px;
-        font-size: 30px;
-    }
-
-    .stats {
-        font-size: 20px;
-    }
-
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-        transition: 0.3s;
-        border-radius: 7px;
-    }
-
-    .card:hover {
-        box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.75);
-    }
-
-    .poke-name {
-        font-size: 30px;
-        margin-top: 0;
-        padding-top: 0;
-    }
-
-    .poke-image {
-        width: 200px;
-        height: 200px;
-    }
-</style>
