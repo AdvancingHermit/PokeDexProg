@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   users: any;
   sub: Subscription | undefined;
   constructor(private data: DataService) { }
@@ -15,7 +15,8 @@ export class LoginComponent {
 
 
   saveDataTest(userNameGot: string, passwordGot: string) {
-    let dataTest: any = localStorage.getItem(userNameGot);
+    let dataTest: any = localStorage.getItem("userNameGot");
+    
 
     if (dataTest == undefined) {
     
@@ -24,12 +25,22 @@ export class LoginComponent {
       this.data.changeMons(data.IDs);
       this.data.changeUserName(userNameGot);
       alert(this.data.userName + " Has now been registered");
+
+      let dataTwo: any = { userName: userNameGot };
+      localStorage.setItem("CurrentUser", JSON.stringify(dataTwo));
+      location.href = "/";
+      
     } else {
       this.users = JSON.parse(dataTest);
       if (this.users.password == (passwordGot)) {
         this.data.changeMons(this.users.IDs);
         this.data.changeUserName(this.users.userName);
         alert("User already exists");
+
+        let dataTwo: any = { userName: userNameGot };
+        localStorage.setItem("CurrentUser", JSON.stringify(dataTwo));
+        location.href = "/";
+
       } else { alert("Password is incorrect"); }
 
     }

@@ -1,9 +1,15 @@
+.wrap{
+    border-bottom-left-radius: 0;
+}
+
 .flex-container {
+    border-radius: 8px;
+    border-top-left-radius: 0;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: rgb(25, 118, 210);
+    background-color: rgb(245, 66, 65);
 }
 
 .flex-container>div {

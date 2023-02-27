@@ -2,17 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IPokemon, pokeSprites } from '../fetchdata/api';
 import { generate, Subscription } from 'rxjs';
 import { PokemonClient } from 'pokenode-ts';
-let pokemonArray: string[] = [];
 let pokeTestArray: IPokemon[] = [];
 
 (async () => {
 
-  for (let i = 1; i < 151; i++) {
+  for (let i = 1; i < 152; i++) {
     const api = new PokemonClient();
 
     await api
       .getPokemonById(i)
-      .then((data) => pokeTestArray[i - 1] = (data)) // will output "Luxray"
+      .then((data) => pokeTestArray[i - 1] = (data))
       .catch((error) => console.error(error));
   }
   console.log(pokeTestArray);

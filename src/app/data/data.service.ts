@@ -8,6 +8,7 @@ export class DataService {
   currentMons = this.idSource.asObservable();
   userName = "";
 
+
   constructor() { }
 
   changeMons(ownedIDs: number[]) {
@@ -15,6 +16,9 @@ export class DataService {
   }
   changeUserName(userName: string) {
     this.userName = userName;
+  } getUserName() {
+    console.log(this.userName);
+    return this.userName;
   }
 
 }
