@@ -44,7 +44,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.pokeArr[i] = pokeTestArray[i];
 
     }
-    console.log("I AM DONE FIRST TEST");
   }
 
   async ngOnDestroy(): Promise<void> {

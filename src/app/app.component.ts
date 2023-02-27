@@ -23,7 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
     this.userName = this.data.getUserName();
-    console.log(this.userName);
   }
 
   async ngOnDestroy(): Promise<void> {

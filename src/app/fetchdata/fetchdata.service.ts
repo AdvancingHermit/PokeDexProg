@@ -21,7 +21,6 @@ export class FetchdataService {
     this.header.append('Content-Type', 'application/json');
     return this._http.get<IPokemon>(this.url + id, { headers: this.header })
       .pipe(
-        //tap(data => console.log('THE POKEMON NUMBER: ' + id + " WITH THE DATA: " + JSON.stringify(data))),
         tap(data => console.log(this.url + id)),
         catchError(this.handleError)
       );
@@ -31,7 +30,6 @@ export class FetchdataService {
     this.header.append('Content-Type', 'application/json');
     return this._http.get<IPokemonArray>(this.urlTwo + amount, { headers: this.header })
       .pipe(
-        //tap(data => console.log('THE POKEMON NUMBER: ' + id + " WITH THE DATA: " + JSON.stringify(data))),
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
