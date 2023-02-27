@@ -9,7 +9,7 @@ export class DataService {
 
   constructor() { }
 
-  changeMessage(ownedIDs: number[]) {
+  changeMons(ownedIDs: number[]) {
     this.idSource.next(ownedIDs)
   }
 

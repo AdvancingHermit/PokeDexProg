@@ -1,6 +1,5 @@
-
-<div class="flex-container">
-    <div class="cardPokemon" *ngFor="let poke of pokeArr; let j = index" style="margin: 5" id="pokemon {{j}}" (click)="selectPokemon(j)">
+<div class="poke-container {{chooseable}}">
+    <div class="card" *ngFor="let poke of pokeArr; let j = index" style="margin: 5" id="pokemon {{j}}" (click)="selectPokemon(j)">
         <img class="poke-image"
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{poke.id}}.png"
             alt="pokemon">
@@ -19,15 +18,14 @@
         p {
         color: #000;
     }
-    .flex-container {
+    .poke-container {
         display: flex;
         justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
         background-color: rgb(25, 118, 210);
     }
-
-    .cardPokemon {
+    .card {
         background-color: #f1f1f1;
         margin: 10px;
         padding: 20px;
@@ -60,9 +58,10 @@
         position: relative;
     }
 
-    .card:hover {
+    .true > div:hover {
         box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.5);
         transform: scale(1.1);
+        cursor: pointer;
     }
 
     .poke-name {
