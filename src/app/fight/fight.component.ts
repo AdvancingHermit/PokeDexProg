@@ -42,6 +42,7 @@ export class FightComponent implements OnInit, OnDestroy, AfterViewInit {
   enemyMaxHP: number = 0;
   ownedIDs: number[] = [];
   done: boolean = true;
+  catchable: boolean = true;
 
 	onSelected(value:string): void {
 		this.selectedArea = value;
@@ -103,6 +104,7 @@ export class FightComponent implements OnInit, OnDestroy, AfterViewInit {
   damage(poke: Pokemon, enem: Pokemon): boolean {
     console.log("damaging");
     let damage: number = Math.floor((poke.stats[1].base_stat / enem.stats[2].base_stat) * 20.0 * (Math.random() * (0.8 - 1.2) + 0.8));
+    document.getElementById("status")!.innerHTML = `${poke.name} dealt ${damage} damage!`
     enem.stats[0].base_stat -= damage;
     if (enem.stats[0].base_stat <= 0) {
       console.log("dead");
@@ -123,25 +125,33 @@ export class FightComponent implements OnInit, OnDestroy, AfterViewInit {
       won = this.damage(this.chosenPokemon[0], this.enemyPokemon[0]);
     }
     if (!won && this.done) {
-      this.done = false;
-        setTimeout(() => {this.damage(this.enemyPokemon[0], this.chosenPokemon[0]); this.done = true}, 1000);
+        this.done = false;
+        setTimeout(() => {this.damage(this.enemyPokemon[0], this.chosenPokemon[0]); this.done = true;}, 1000);
+        setTimeout(() => {document.getElementById("status")!.innerHTML = `Fight!`}, 2000);
     }
   }
 
   attemptCatch(): void {
-    console.log("attempting to catch");
-    
-    let n = Math.random()*255;
-    let f = (this.enemyMaxHP * 255*4) / (this.enemyPokemon[0].stats[0].base_stat * 20);
-    if (n < f) {
-      console.log("caught");
-      this.stage = 3;
-      this.loserPokemon = [this.enemyPokemon[0]];
-      this.loserName = this.enemyPokemon[0].name;
-      this.nextStage();
-    } else {
-      setTimeout(() => {this.damage(this.enemyPokemon[0], this.chosenPokemon[0]);}, 800);
-    }
+    if (this.catchable) {
+      console.log("Attempting to catch");
+      this.catchable = false;
+      let n = Math.random()*255;
+      let f = (this.enemyMaxHP * 255*4) / (this.enemyPokemon[0].stats[0].base_stat * 100);
+      document.getElementById("status")!.innerHTML = `Attempting to catch ${this.enemyPokemon[0].name}...`
+      if (n < f) {
+        setTimeout(() => {document.getElementById("status")!.innerHTML = `Caught ${this.enemyPokemon[0].name}!`;
+                          console.log("caught");
+                          this.stage = 3;
+                          this.loserPokemon = [this.enemyPokemon[0]];
+                          this.loserName = this.enemyPokemon[0].name;
+                          this.catchable = true;
+                          this.nextStage();} , 1200);} 
+        else {
 
+        setTimeout(() => {document.getElementById("status")!.innerHTML = `Failed to catch ${this.enemyPokemon[0].name}.`} , 1200);
+        setTimeout(() => {this.damage(this.enemyPokemon[0], this.chosenPokemon[0])}, 2200);
+        setTimeout(() => {this.catchable = true; document.getElementById("status")!.innerHTML = `Fight!`;}, 3200);
+      }
+    }
   }
 }

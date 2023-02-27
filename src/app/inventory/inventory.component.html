@@ -1,6 +1,35 @@
-<p>inventory works!</p>
 
-<div>
+<div class="furthest">
+<div class="outer">
+    <h1>Caught Pokémon</h1>
     <app-poke-list [inputIDs]="ownedIDs"></app-poke-list>
 
 </div>
+</div>
+<style>
+    .outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-inline: 20px;
+    background-color: rgb(25, 118, 210);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+}
+.furthest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+</style>

@@ -1,9 +1,11 @@
 
+<div class="furtherst">
 <div class="outer">
 <div class="col">
     <div class="areaStage" id="stage 1">
+        <h1>Select an area to fight in!</h1>
         <p>Selected area: {{ selectedArea }}</p>
-        <p>Select the area you want to fight in!</p>
+        
         <select class="selecter" #area (change)="onSelected(area.value)">
             <option>Grassy Plains</option>
             <option>Snowfield</option>
@@ -16,12 +18,12 @@
 
     </div>
     <div id="stage 2" style="display: none;">
-        <h1>Choose a Pokémon!</h1>
+        <h1>Choose your Pokémon!</h1>
         <button class="next" (click)="submittedPokemon()">Next</button>
         <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true" ></app-poke-list>
     </div>
     <div id="stage 3" style="display: none;">
-        <h1>Fight!</h1>
+        <h1 id="status">Fight!</h1>
         <div class="fight">
             <app-poke-list id="chosen" [inputPokemon]="chosenPokemon" [fight]="true"></app-poke-list>
             <div class="versus">
@@ -48,7 +50,7 @@
     </div>
 </div>    
 </div>
-
+</div>
 <style>
 .action {
     height: 50px;
@@ -131,6 +133,10 @@
     margin: 10px;
     padding: 10px;
 }
+.stage2 {
+    position: relative;
+}
+
 .outer {
     display: flex;
     flex-direction: column;
@@ -145,7 +151,13 @@
     font-weight: 300;
     text-align: center;
 }
-.stage2 {
-    position: relative;
+.furtherst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }
 </style>
