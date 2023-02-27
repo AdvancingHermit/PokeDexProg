@@ -20,8 +20,7 @@ export class DataService {
       this.userStore = JSON.parse(dataSecond);
       this.ownedIDs = this.userStore.IDs;
       this.changeMons(this.ownedIDs);
-      let dataForChange: any = { password: this.userStore.password, IDs: this.ownedIDs };
-      localStorage.setItem(this.userName, JSON.stringify(dataForChange));
+
     }
   }
 
@@ -32,6 +31,8 @@ export class DataService {
       let dataSecond: any = localStorage.getItem(this.userStore.userName);
       this.userStore = JSON.parse(dataSecond);
       this.ownedIDs.push(iD);
+      let dataForChange: any = { password: this.userStore.password, IDs: this.ownedIDs };
+      localStorage.setItem(this.userName, JSON.stringify(dataForChange));
 
     }
   }
