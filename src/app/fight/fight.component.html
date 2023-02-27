@@ -1,1 +1,163 @@
-<p>fight works!</p>
+
+<div class="furtherst">
+<div class="outer">
+<div class="col">
+    <div class="areaStage" id="stage 1">
+        <h1>Select an area to fight in!</h1>
+        <p>Selected area: {{ selectedArea }}</p>
+        
+        <select class="selecter" #area (change)="onSelected(area.value)">
+            <option>Grassy Plains</option>
+            <option>Snowfield</option>
+            <option>Dusty Dunes</option>
+            <option>Dripstone Caves</option>
+            <option>Dark Forest</option>
+        </select>
+        <button class="next" (click)="nextStage()">Next</button>
+        <app-poke-list [inputIDs]="pokemon[areaIndex]"></app-poke-list>
+
+    </div>
+    <div id="stage 2" style="display: none;">
+        <h1>Choose your Pokémon!</h1>
+        <button class="next" (click)="submittedPokemon()">Next</button>
+        <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true" ></app-poke-list>
+    </div>
+    <div id="stage 3" style="display: none;">
+        <h1 id="status">Fight!</h1>
+        <div class="fight">
+            <app-poke-list id="chosen" [inputPokemon]="chosenPokemon" [fight]="true"></app-poke-list>
+            <div class="versus">
+                <p>VS</p>
+            </div>
+            <app-poke-list id="enemy" [inputPokemon]="enemyPokemon" [fight]="true"></app-poke-list>
+        </div>
+        <div class="fight">
+            <button class="action" id="fight" (click)="attack()">Attack!</button>
+            <button class="action" id="catch" (click)="attemptCatch()">Throw Pokéball!</button>
+        </div>
+    </div>
+    <div id="stage 4" style="display: none;">
+        <h1>{{winnerName}} defeated {{loserName}}!</h1>
+        <div class="done ">
+            <app-poke-list [inputPokemon]="winnerPokemon" [fight]="true"></app-poke-list>
+        </div>
+    </div>
+    <div id="stage 5" style="display: none;">
+        <h1>You caught {{loserName}}!</h1>
+        <div class="done ">
+            <app-poke-list [inputPokemon]="loserPokemon" [fight]="true"></app-poke-list>
+        </div>
+    </div>
+</div>    
+</div>
+</div>
+<style>
+.action {
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #000;
+    background-color: #fff;
+    color: #000;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+#fight {
+    background-color: red;
+    color: #fff;
+}
+#catch {
+    background-color: rgb(15, 206, 71);
+    color: #fff;
+}
+#chosen {
+    animation-iteration-count: infinite;
+}
+.versus {
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(245, 66, 65);
+    border-radius: 7px;
+    font-size: 4rem;
+    border-color: #000;
+    border-style: solid;
+    border-width: 2px;
+}
+.versus > p {
+    margin: 0;
+    padding: 0;
+}
+.fight {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    background-color: rgb(25, 118, 210);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+}
+.next {
+    width: 100px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.selecter {
+    width: 300px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    margin: 10px;
+    padding: 10px;
+}
+.stage2 {
+    position: relative;
+}
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    background-color: rgb(25, 118, 210);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+}
+.furtherst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+</style>
