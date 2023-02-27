@@ -18,6 +18,10 @@ export class DataService {
     if (dataUser != undefined) {
       this.userStore = JSON.parse(dataUser);
       userStName = this.userStore.userName;
+    } else {
+      console.log(location.href);
+      if (location.href != "http://localhost:4200/login")
+        location.href = "/login";
     }
     return userStName;
   }

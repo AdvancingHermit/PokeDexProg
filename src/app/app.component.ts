@@ -12,12 +12,12 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private data: DataService) { }
   title = 'test';
   userName = "";
-  
-  
-  
+
+
+
 
   onLogin(user: string) {
-  this.userName = user;
+    this.userName = user;
   }
 
 
