@@ -1,0 +1,36 @@
+.former {
+    font-size: 1.5rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.formElement{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 0.1px;
+    text-align: center;
+    height: 40px;
+    width: 365px;
+}
+.logText{
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+    padding: 0; 
+    padding-top: 15px;
+}
+.logBut{
+    margin-top: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    border-width: 1px;
+    height: 40px;
+    width: 375px;
+}

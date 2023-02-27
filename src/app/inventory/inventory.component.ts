@@ -4,6 +4,7 @@ import { generate, Subscription } from 'rxjs';
 import { PokemonClient, Pokemon } from 'pokenode-ts';
 import { getSafePropertyAccessString } from '@angular/compiler';
 
+
 // array of pokemon ids 1 to 100 for testing
 let ownedIDs: number[] = [].constructor(100).fill(0).map((x: number, y: number) => y + 1);
 
@@ -35,6 +36,8 @@ export class InventoryComponent implements OnInit, OnDestroy {
   sub: Subscription | undefined;
   pokeArr: Pokemon[] = [];
   stats: string[][] = [[]];
+ 
+  
   
   async ngOnInit(): Promise<void> {
     console.log(this.stats);

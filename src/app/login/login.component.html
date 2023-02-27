@@ -1,6 +1,12 @@
-<button (click)="saveData()"> Save Data </button>
-<button (click)="loadData()"> Load Data </button>
+<div >
+  <form #f="ngForm" (ngSubmit)="saveDataTest(userName.value, passValue.value)" id="userTest" class="former">
+    <p class="logText">Username: </p>
+    <input type="text" id="userName" name="userName" class="formElement" #userName ngModel>
+    <br>
+    <p class="logText">Password: </p>
+    <input type="text" id="password" name="password" class="formElement" #passValue ngModel>
+    <br>
+    <button type="submit" class="logBut">Sign In/Up</button>
+  </form>
 
-<div *ngIf="users">
-  <h1> Name: {{users.userName}} </h1>
 </div>
