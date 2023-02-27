@@ -3,6 +3,9 @@ import { IPokemon } from '../fetchdata/api';
 import { generate, Subscription } from 'rxjs';
 import { PokemonClient, Pokemon } from 'pokenode-ts';
 import { getSafePropertyAccessString } from '@angular/compiler';
+import { DataService } from "../data/data.service";
+import {  Subscription } from 'rxjs';
+import {Pokemon } from 'pokenode-ts';
 
 
 // array of pokemon ids 1 to 100 for testing
@@ -23,7 +26,6 @@ async function getPokemon() {
   return pokemonArray;
 }
 
-
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
@@ -36,21 +38,16 @@ export class InventoryComponent implements OnInit, OnDestroy {
   sub: Subscription | undefined;
   pokeArr: Pokemon[] = [];
   stats: string[][] = [[]];
- 
+
+  ownedIDs: number[] = [];
+
   
-  
+  constructor(private data: DataService) { }
+
   async ngOnInit(): Promise<void> {
     console.log(this.stats);
-    getPokemon().then((data) => {
-      this.pokeArr = data
-      for (let i = 0; i < this.pokeArr.length; i++) {
-        console.log(this.pokeArr[i]);
-      }
-    });
-
+    this.sub = this.data.currentMons.subscribe(ownedIDs => this.ownedIDs = ownedIDs)
   }
-
-
 
   async ngOnDestroy(): Promise<void> {
     this.sub?.unsubscribe();

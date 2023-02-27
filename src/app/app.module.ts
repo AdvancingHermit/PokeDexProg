@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { LoginComponent } from './login/login.component';
+import { PokeListComponent } from './poke-list/poke-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     InventoryComponent,
     FetchdataComponent,
     SearchFilterPipe,
-    LoginComponent    
+    LoginComponent,    
+    PokeListComponent
   ],
   imports: [
     BrowserModule,
