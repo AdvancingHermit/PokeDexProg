@@ -32,7 +32,6 @@ export class DataService {
     this.userName = userName;
   } getUserName() {
     this.getName();
-    console.log(this.userName);
     return this.userName;
   }
 
