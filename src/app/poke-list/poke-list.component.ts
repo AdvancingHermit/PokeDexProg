@@ -33,6 +33,8 @@ export class PokeListComponent implements OnInit, OnDestroy {
   areas = areas;
   pokemon = pokemon;
   @Input() inputIDs: number[] = [];
+  @Input() chooseable: boolean = false;
+  chosen: number = -1;
   constructor() { }
 
   async ngOnInit(): Promise<void> {
@@ -45,7 +47,16 @@ export class PokeListComponent implements OnInit, OnDestroy {
 
     return areas[pokemon.findIndex((elem) => elem.indexOf(poke.id) > -1)]
   }
-
+  selectPokemon(id: number): void {
+    if (this.chooseable) {
+    console.log("selected");
+    document.getElementById("pokemon " + id)!.style.background = "rgb(15, 251, 5)";
+    console.log("pokemon " + this.chosen)
+    if (this.chosen != -1)
+        document.getElementById("pokemon " + this.chosen)!.style.background = "white";
+    this.chosen = id;
+  }
+  }
   async ngOnDestroy(): Promise<void> {
     this.sub?.unsubscribe();
   }

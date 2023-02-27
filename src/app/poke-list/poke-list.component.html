@@ -1,5 +1,5 @@
 <div class="flex-container">
-    <div class="card" *ngFor="let poke of pokeArr" style="margin: 5">
+    <div class="card pokemon" *ngFor="let poke of pokeArr; let j = index" style="margin: 5" id="pokemon {{j}}" (click)="selectPokemon(j)">
         <img class="poke-image"
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{poke.id}}.png"
             alt="pokemon">
@@ -56,6 +56,7 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
         transition: 0.3s;
         border-radius: 7px;
+        position: relative;
     }
 
     .card:hover {

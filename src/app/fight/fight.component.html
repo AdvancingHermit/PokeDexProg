@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 <div class="outer">
 <div class="col">
-    <p>Selected area: {{ selectedArea }}</p>
-    <p>Select the area you want to fight in!</p>
-    <p class=""></p>
+    <div class="areaStage" id="stage 1">
+        <p>Selected area: {{ selectedArea }}</p>
+        <p>Select the area you want to fight in!</p>
         <select class="selecter" #area (change)="onSelected(area.value)">
             <option>Grassy Plains</option>
             <option>Snowfield</option>
@@ -11,11 +11,32 @@
             <option>Dripstone Caves</option>
             <option>Dark Forest</option>
         </select>
-    <app-poke-list [inputIDs]="pokemon[areaIndex]"></app-poke-list>
+        <button class="next" (click)="nextStage()">
+            Next 
+        </button>
+        <app-poke-list [inputIDs]="pokemon[areaIndex]"></app-poke-list>
+
+    </div>
+    <div id="stage 2" style="display: none;">
+        <h1>Choose a Pokémon!</h1>
+        <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true"></app-poke-list>
+    </div>
 </div>    
 </div>
 
 <style>
+.next {
+    width: 100px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    margin: 10px;
+    padding: 10px;
+}
 .selecter {
     width: 300px;
     height: 50px;
@@ -41,5 +62,8 @@
     font-size: 1.5rem;
     font-weight: 300;
     text-align: center;
+}
+.stage2 {
+    position: relative;
 }
 </style>
