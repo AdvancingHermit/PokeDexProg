@@ -13,6 +13,8 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'test';
   userName = "";
   
+  
+  
 
   onLogin(user: string) {
   this.userName = user;

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   saveDataTest(userNameGot: string, passwordGot: string) {
-    let dataTest: any = localStorage.getItem("userNameGot");
+    let dataTest: any = localStorage.getItem(userNameGot);
     
 
     if (dataTest == undefined) {
