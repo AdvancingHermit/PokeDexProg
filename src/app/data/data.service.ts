@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
-  ownedIDs: number[] = [23, 27, 50, 84, 104, 111, 140, 322, 328, 331, 41, 74, 95, 138, 204, 246, 299, 304, 337, 338];
+  ownedIDs: number[] = [1, 4, 7];
   private idSource = new BehaviorSubject(this.ownedIDs);
   currentMons = this.idSource.asObservable();
   userName = this.getName();
@@ -30,9 +30,11 @@ export class DataService {
       this.userStore = JSON.parse(dataUser);
       let dataSecond: any = localStorage.getItem(this.userStore.userName);
       this.userStore = JSON.parse(dataSecond);
-      this.ownedIDs.push(iD);
-      let dataForChange: any = { password: this.userStore.password, IDs: this.ownedIDs };
-      localStorage.setItem(this.userName, JSON.stringify(dataForChange));
+      if (this.ownedIDs.includes(iD) == false) {
+        this.ownedIDs.push(iD);
+        let dataForChange: any = { password: this.userStore.password, IDs: this.ownedIDs };
+        localStorage.setItem(this.userName, JSON.stringify(dataForChange));
+      }
 
     }
   }

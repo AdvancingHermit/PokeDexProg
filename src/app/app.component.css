@@ -17,11 +17,13 @@
     display: flex;
     align-items: center;
     background-color: #1c61b7;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .userNameView{
-    margin-left: 87%;
+    margin-left: 84%;
+    font-size: 1rem;
 }
 
 .content {

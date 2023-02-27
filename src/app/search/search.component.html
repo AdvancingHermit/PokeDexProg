@@ -1,23 +1,28 @@
-<form class="wrap">
-    <div class="search">
-        <h3>Search Pokemon By Name: </h3>
-        <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter By Pokemon Name"
-            [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
-    </div>
-</form>
-
-<div class="flex-container">
-        <div class="card" *ngFor="let pokemon of pokeTestSearch | searchFilter: searchTerm; index as i" style="margin: 5">
-                <img class="poke-image"
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png"
-                    alt="pokemon">
-
-                <p class="poke-name">{{pokemon.name}}</p>
-                <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
-                    <p class="stats">{{pokemon.stats[k].stat.name + ": " + pokemon.stats[k].base_stat}}</p>
-                </span>
+<div class="outer">
+    <form class="wrap">
+        <div class="search">
+            <h1>Search Pokemon</h1>
+            <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter By Pokemon Name"
+                [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
         </div>
-</div>
+    </form>
 
+    <div class="flex-container">
+            <div class="card" *ngFor="let pokemon of pokeSearch | searchFilter: searchTerm; index as i" style="margin: 5">
+                    <img class="poke-image"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png"
+                        alt="pokemon">
+
+                    <p class="poke-name">{{pokemon.name}}</p>
+                    <div class="subStats">
+                        <p>ID: {{pokemon.id}}</p>
+                        <p>{{pokemonArea(pokemon)}}</p>
+                    </div>
+                    <span *ngFor="let i of [].constructor(3); let k = index" style="margin: 5">
+                        <p class="stats">{{pokemon.stats[k].stat.name + ": " + pokemon.stats[k].base_stat}}</p>
+                    </span>
+            </div>
+    </div>
+</div>
 
 <router-outlet></router-outlet>

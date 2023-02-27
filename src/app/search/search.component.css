@@ -1,3 +1,23 @@
+.outer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(25, 118, 210);
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding-bottom: 50px;
+}
+.searchTerm {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    height: 20px;
+    outline: none;
+}
 .wrap{
     border-bottom-left-radius: 0;
 }
@@ -9,7 +29,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: rgb(245, 66, 65);
+    background-color: rgb(25, 118, 210);
 }
 
 .flex-container>div {
@@ -19,30 +39,66 @@
     font-size: 30px;
 }
 
-.stats {
-    font-size: 20px;
+p {
+    color: #000;
+}
+.poke-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(25, 118, 210);
+}
+.card {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
 }
 
+.stats {
+    font-size: 20px;
+    margin: 5px;
+    padding: 0;
+    padding-left: 10px;
+    text-align: left;
+}
+.subStats {
+    font-size: 15px;
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0;
+    color: #3d3d3d;
+    text-align: center;
+}
+.subStats > p {
+    margin: 0;
+    padding: 0;
+}
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     transition: 0.3s;
     border-radius: 7px;
+    position: relative;
 }
 
-.card:hover {
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.75);
+.true > div:hover {
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .poke-name {
+    text-align: center;
     font-size: 30px;
-    margin-top: 0;
-    padding-top: 0;
-}
-.poke-name:first-letter, .stats:first-letter {
-    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
 }
 
 .poke-image {
     width: 200px;
     height: 200px;
+}
+.poke-name:first-letter, .stats:first-letter {
+text-transform: uppercase;
 }

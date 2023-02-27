@@ -38,12 +38,18 @@
     </div>
     <div id="stage 4" style="display: none;">
         <h1>{{winnerName}} defeated {{loserName}}!</h1>
+        <a class="next" target="" rel="noopener" routerLink="/fight">Fight again!</a>
+        <br/>
+        <br/>
         <div class="done ">
             <app-poke-list [inputPokemon]="winnerPokemon" [fight]="true"></app-poke-list>
         </div>
     </div>
     <div id="stage 5" style="display: none;">
         <h1>You caught {{loserName}}!</h1>
+        <a class="next" target="" rel="noopener" routerLink="/fight">Fight again!</a>
+        <br/>
+        <br/>
         <div class="done ">
             <app-poke-list [inputPokemon]="loserPokemon" [fight]="true"></app-poke-list>
         </div>

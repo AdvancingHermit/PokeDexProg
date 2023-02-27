@@ -62,10 +62,7 @@ export class FightComponent implements OnInit, OnDestroy, AfterViewInit {
     this.sub?.unsubscribe();
   }
   async addPokemon(): Promise<void> {
-    this.ownedIDs.push(this.enemy);
-    this.data.changeMons(this.ownedIDs);
-    console.log(this.ownedIDs);
-    console.log(this.data.currentMons);
+    this.data.changeOwnedIds(this.enemy);
   }
   async nextStage(): Promise<void> {
     switch(this.stage) {
@@ -135,8 +132,9 @@ export class FightComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.catchable) {
       console.log("Attempting to catch");
       this.catchable = false;
-      let n = Math.random()*255;
-      let f = (this.enemyMaxHP * 255*4) / (this.enemyPokemon[0].stats[0].base_stat * 100);
+      let n = Math.random()*255.0;
+      console.log(n);
+      let f = (this.enemyMaxHP * 255*4) / (this.enemyPokemon[0].stats[0].base_stat * 30);
       document.getElementById("status")!.innerHTML = `Attempting to catch ${this.enemyPokemon[0].name}...`
       if (n < f) {
         setTimeout(() => {document.getElementById("status")!.innerHTML = `Caught ${this.enemyPokemon[0].name}!`;
