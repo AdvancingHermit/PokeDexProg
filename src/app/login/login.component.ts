@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (dataTest == undefined) {
     
-      let data: any = { password: passwordGot, IDs: [1, 2, 7, 8] };
+      let data: any = { password: passwordGot, IDs: [1, 4, 7] };
       localStorage.setItem(userNameGot, JSON.stringify(data));
       this.data.changeMons(data.IDs);
       this.data.changeUserName(userNameGot);
