@@ -23,7 +23,7 @@
         <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true" ></app-poke-list>
     </div>
     <div id="stage 3" style="display: none;">
-        <h1 id="status">Fight!</h1>
+        <h1 id="status" class="fightStatus">Fight!</h1>
         <div class="fight">
             <app-poke-list id="chosen" [inputPokemon]="chosenPokemon" [fight]="true"></app-poke-list>
             <div class="versus">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div id="stage 4" style="display: none;">
-        <h1>{{winnerName}} defeated {{loserName}}!</h1>
+        <h1 class="winString">{{winnerName}} defeated {{loserName}}!</h1>
         <a class="next" target="" rel="noopener" routerLink="/fight">Fight again!</a>
         <br/>
         <br/>
@@ -73,6 +73,10 @@
     cursor: pointer;
 
 }
+.fightStatus:first-letter, .winString:first-letter {
+    text-transform: uppercase;
+}
+
 #fight {
     background-color: red;
     color: #fff;
