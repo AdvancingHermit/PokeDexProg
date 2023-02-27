@@ -12,6 +12,30 @@ export class DataService {
 
   constructor() { }
 
+  updateOwnedIDs(){
+    let dataUser: any = localStorage.getItem("CurrentUser");
+    if (dataUser != undefined) {
+      this.userStore = JSON.parse(dataUser);
+      let dataSecond: any = localStorage.getItem(this.userStore.userName);
+      this.userStore = JSON.parse(dataSecond);
+      this.ownedIDs = this.userStore.IDs;
+      this.changeMons(this.ownedIDs);
+      let dataForChange: any = { password: this.userStore.password, IDs: this.ownedIDs };
+      localStorage.setItem(this.userName, JSON.stringify(dataForChange));
+    }
+  }
+
+  changeOwnedIds(iD: number){
+    let dataUser: any = localStorage.getItem("CurrentUser");
+    if (dataUser != undefined) {
+      this.userStore = JSON.parse(dataUser);
+      let dataSecond: any = localStorage.getItem(this.userStore.userName);
+      this.userStore = JSON.parse(dataSecond);
+      this.ownedIDs.push(iD);
+
+    }
+  }
+
   getName(): string {
     let userStName: string = "";
     let dataUser: any = localStorage.getItem("CurrentUser");
@@ -23,10 +47,12 @@ export class DataService {
       if (location.href != "http://localhost:4200/login")
         location.href = "/login";
     }
+    this.updateOwnedIDs()
     return userStName;
   }
   changeMons(ownedIDs: number[]) {
     this.idSource.next(ownedIDs)
+    console.log(this.idSource);
   }
   changeUserName(userName: string) {
     this.userName = userName;
