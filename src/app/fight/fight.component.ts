@@ -15,6 +15,7 @@ export class FightComponent implements OnInit, OnDestroy {
   areaIndex = 0;
   sub: Subscription | undefined;
   stage = 0;
+  chosenPokemon: number = -1;
 
 	onSelected(value:string): void {
 		this.selectedArea = value;
@@ -43,8 +44,13 @@ export class FightComponent implements OnInit, OnDestroy {
       case 1:
         document.getElementById("stage 2")!.style.display = "none";
         document.getElementById("stage 3")!.style.display = "block";
+        console.log(this.chosenPokemon);
         this.stage++;
         break;
     }
+  }
+  submittedPokemon($event: number): void {
+    this.chosenPokemon = $event;
+    this.nextStage();
   }
 }

@@ -19,7 +19,10 @@
     </div>
     <div id="stage 2" style="display: none;">
         <h1>Choose a Pokémon!</h1>
-        <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true"></app-poke-list>
+        <app-poke-list [inputIDs]="ownedIDs" [chooseable]="true" (chosenPokemon)="submittedPokemon($event)"></app-poke-list>
+    </div>
+    <div id="stage 3" style="display: none;">
+        <h1>Fight!</h1>
     </div>
 </div>    
 </div>

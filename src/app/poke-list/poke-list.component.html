@@ -1,5 +1,6 @@
+
 <div class="flex-container">
-    <div class="card pokemon" *ngFor="let poke of pokeArr; let j = index" style="margin: 5" id="pokemon {{j}}" (click)="selectPokemon(j)">
+    <div class="cardPokemon" *ngFor="let poke of pokeArr; let j = index" style="margin: 5" id="pokemon {{j}}" (click)="selectPokemon(j)">
         <img class="poke-image"
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{poke.id}}.png"
             alt="pokemon">
@@ -26,7 +27,7 @@
         background-color: rgb(25, 118, 210);
     }
 
-    .flex-container>div {
+    .cardPokemon {
         background-color: #f1f1f1;
         margin: 10px;
         padding: 20px;
